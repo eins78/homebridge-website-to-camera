@@ -1,8 +1,8 @@
 "use strict";
 
-let ip = require("ip");
-let crypto = require("crypto");
-let ScreenshotHelper = require("./ScreenshotHelper");
+const ip = require("ip");
+const crypto = require("crypto");
+const ScreenshotHelper = require("./ScreenshotHelper");
 
 module.exports = Camera;
 
