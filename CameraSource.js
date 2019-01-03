@@ -59,9 +59,12 @@ function Camera(hap, conf, log) {
 }
 
 Camera.prototype.handleSnapshotRequest = function (request, callback) {
-    let width = this.conf.width || (request.width * (this.conf.scale || 2));
-    let height = this.conf.height || (request.height * (this.conf.scale || 2));
-    this.screenshotHelper.getScreenshot(width, height)
+    const config = Object.assign({}, this.conf, {
+      width: this.conf.width || (request.width * (this.conf.scale || 2)),
+      height: this.conf.height || (request.height * (this.conf.scale || 2))
+    })
+
+    this.screenshotHelper.getScreenshot(config)
         .then(
             img => {
                 this.log("Got screenshot");
