@@ -34,10 +34,18 @@ ScreenshotHelper.prototype.getScreenshot = async function (config) {
     }
     this.log("Opening new page");
     const page = await this.browser.newPage();
+
     this.log("Setting Viewport to " + viewport.width + "x" + viewport.height);
     await page.setViewport(viewport);
+
     this.log("Going to page: " + this.url);
     await page.goto(this.url, gotoOpts);
+
+    if (config.runScriptOnPage) {
+      this.log("Running script on page: " + config.runScriptOnPage);
+      await page.evaluate(config.runScriptOnPage)
+    }
+
     const screenshot = await page.screenshot(screenshotOpts);
     this.log("Created screenshot");
     page.close();

@@ -8,7 +8,8 @@
       "chromiumPath": "/Applications/Chromium.app/Contents/MacOS/Chromium",
 
       "waitUntil": "domcontentloaded",
-      "timeout": "3000"
+      "timeout": "3000",
+      "runScriptOnPage": "document.body.style.zoom = 2; document.body.style.fontFamily = 'monospace'"
     }
   ]
 }
