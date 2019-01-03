@@ -5,6 +5,7 @@ module.exports = ScreenshotHelper;
 const defaultConfig = {
   waitUntil: 'networkidle0',
   timeout: 10000,
+  screenshot: { type: "jpeg" }
 }
 
 function ScreenshotHelper(log, url, chromiumPath = "/usr/bin/chromium-browser") {
@@ -19,7 +20,9 @@ ScreenshotHelper.prototype.getScreenshot = async function (config) {
 
     const viewport = { width: config.width, height: config.height };
     const gotoOpts = { waitUntil: config.waitUntil, timeout: config.timeout };
-    const screenshotOpts = { type: "jpeg" };
+    const screenshotOpts = Object.assign({}, defaultConfig.screenshot, {
+      clip: config.clip
+    });
 
     if (!this.browser) {
         this.log("Starting new instance of Chromium: " + this.chromiumPath);

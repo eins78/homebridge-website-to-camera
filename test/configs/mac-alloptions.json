@@ -2,10 +2,19 @@
   "cameras": [
     {
       "name": "Example",
-      "url": "http://example.com",
-      "height": 300,
-      "width": 400,
+
       "chromiumPath": "/Applications/Chromium.app/Contents/MacOS/Chromium",
+
+      "url": "http://example.com",
+
+      "height": 1200,
+      "width": 1200,
+      "clip": {
+        "x": 70,
+        "y": 100,
+        "height": 320,
+        "width": 480
+      },
 
       "waitUntil": "domcontentloaded",
       "timeout": "3000",
